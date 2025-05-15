@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>website testing code</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    background-color: #f0f2f5;
+    transition: background 0.5s ease;
+  }
+  header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  nav {
+    background: #2c3e50;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  nav button {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    transition: background 0.3s ease;
+  }
+  nav button:hover, nav button.active {
+    background: #2980b9;
+  }
+  main {
+    padding: 2rem;
+    min-height: calc(100vh - 120px);
+  }
+  .hidden {
+    display: none;
+  }
+  .login-container {
+    max-width: 400px;
+    margin: 3rem auto;
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  .login-container h2 {
+    margin-bottom: 1.5rem;
+    color: #34495e;
+    text-align: center;
+  }
+  .login-container label {
+    display: block;
+    margin-top: 1rem;
+    color: #34495e;
+    font-weight: 600;
+  }
+  .login-container input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-top: 0.3rem;
+    border-radius: 4px;
+    border: 1.5px solid #dfe6e9;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  .login-container input:focus {
+    outline: none;
+    border-color: #4a90e2;
+  }
+  .login-container button {
+    margin-top: 2rem;
+    width: 100%;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(74,144,226,0.5);
+    transition: background-color 0.3s ease;
+  }
+  .login-container button:hover {
+    background-color: #357ABD;
+  }
+  .error-message {
+    margin-top: 1rem;
+    color: #e74c3c;
+    font-weight: 600;
+    text-align: center;
+  }
+  .home-content, .keterangan-content {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #2c3e50;
+  }
+  .home-content h2, .keterangan-content h2 {
+    margin-bottom: 1.5rem;
+  }
+  .background-control {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: inset 0 0 6px #bdc3c7;
+  }
+  .background-control label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .background-control input[type="color"],
+  .background-control input[type="text"] {
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    border: 1.5px solid #bdc3c7;
+    font-size: 1rem;
+  }
+  .background-control input[type="text"] {
+    width: 60%;
+  }
+  .background-control button {
+    margin-top: 1rem;
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .background-control button:hover {
+    background-color: #1e8449;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #95a5a6;
+    background: #ecf0f1;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  website testing code
+</header>
+
+<nav id="nav" class="hidden">
+  <button id="home-btn" class="active">Home</button>
+  <button id="keterangan-btn">Keterangan</button>
+  <button id="logout-btn" style="margin-left:auto; background:#e74c3c;">Logout</button>
+</nav>
+
+<main>
+
+  <!-- Login Page -->
+  <section id="login-section" class="">
+    <div class="login-container">
+      <h2>Login</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username" autocomplete="username" />
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password" />
+      <button id="login-btn">Login</button>
+      <div class="error-message" id="login-error"></div>
+    </div>
+  </section>
+
+  <!-- Home Page -->
+  <section id="home-section" class="hidden">
+    <div class="home-content">
+      <h2>Welcome Home!</h2>
+      <p>This is the home page of the multi-feature website. Here you can customize the background.</p>
+      <div class="background-control">
+        <label for="bg-color">Choose Background Color:</label>
+        <input type="color" id="bg-color" value="#f0f2f5" />
+        <label for="bg-image-url" style="margin-top:1rem;">Or enter Background Image URL:</label>
+        <input type="text" id="bg-image-url" placeholder="https://example.com/image.jpg" />
+        <button id="apply-bg-btn">Apply Background</button>
+        <button id="reset-bg-btn" style="background:#c0392b; margin-left:1rem;">Reset Background</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Keterangan Page -->
+  <section id="keterangan-section" class="hidden">
+    <div class="keterangan-content">
+      <h2>Keterangan</h2>
+      <p>
+        Website ini dibuat untuk demo dengan berbagai fitur utama: login sederhana, halaman utama, halaman keterangan informasi, dan fitur kustomisasi background. Anda dapat login untuk mengakses halaman utama dan mengubah tampilan latar belakang sesuai keinginan Anda baik dengan warna maupun gambar latar belakang.
+      </p>
+      <p>
+        Fitur login hanya mockup tanpa backend, username dan password adalah <strong>admin</strong>.
+      </p>
+      <p>
+        Selamat mencoba dan semoga bermanfaat.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy;  Website testing code
+</footer>
+
+<script>
+  (function(){
+    const loginSection = document.getElementById('login-section');
+    const homeSection = document.getElementById('home-section');
+    const keteranganSection = document.getElementById('keterangan-section');
+    const nav = document.getElementById('nav');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const loginError = document.getElementById('login-error');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    const homeBtn = document.getElementById('home-btn');
+    const keteranganBtn = document.getElementById('keterangan-btn');
+
+    const bgColorInput = document.getElementById('bg-color');
+    const bgImageUrlInput = document.getElementById('bg-image-url');
+    const applyBgBtn = document.getElementById('apply-bg-btn');
+    const resetBgBtn = document.getElementById('reset-bg-btn');
+
+    const validUsername = "admin";
+    const validPassword = "admin";
+
+    function showSection(section) {
+      // Hide all
+      loginSection.classList.add('hidden');
+      homeSection.classList.add('hidden');
+      keteranganSection.classList.add('hidden');
+
+      homeBtn.classList.remove('active');
+      keteranganBtn.classList.remove('active');
+
+      if (section === 'login') {
+        loginSection.classList.remove('hidden');
+        nav.classList.add('hidden');
+      } else if (section === 'home') {
+        homeSection.classList.remove('hidden');
+        nav.classList.remove('hidden');
+        homeBtn.classList.add('active');
+      } else if (section === 'keterangan') {
+        keteranganSection.classList.remove('hidden');
+        nav.classList.remove('hidden');
+        keteranganBtn.classList.add('active');
+      }
+    }
+
+    function isLoggedIn() {
+      return sessionStorage.getItem('loggedIn') === 'true';
+    }
+
+    function login(username, password) {
+      if (username === validUsername && password === validPassword) {
+        sessionStorage.setItem('loggedIn', 'true');
+        showSection('home');
+        loginError.textContent = '';
+        usernameInput.value = 'admin' ;
+        passwordInput.value = 'admin';
+      } else {
+        loginError.textContent = 'Username atau password salah';
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem('loggedIn');
+      // Reset background on logout
+      resetBackground();
+      showSection('login');
+    }
+
+    function applyBackground() {
+      const color = bgColorInput.value.trim();
+      const imageUrl = bgImageUrlInput.value.trim();
+
+      if (imageUrl) {
+        document.body.style.background = `url('${imageUrl}') no-repeat center center fixed`;
+        document.body.style.backgroundSize = 'cover';
+      } else {
+        document.body.style.background = color || '#f0f2f5';
+        document.body.style.backgroundSize = '';
+      }
+    }
+
+    function resetBackground() {
+      document.body.style.background = '#f0f2f5';
+      document.body.style.backgroundSize = '';
+      bgColorInput.value = '#f0f2f5';
+      bgImageUrlInput.value = '';
+    }
+
+    loginBtn.addEventListener('click', () => {
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
+      login(username, password);
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      logout();
+    });
+
+    homeBtn.addEventListener('click', () => {
+      showSection('home');
+    });
+
+    keteranganBtn.addEventListener('click', () => {
+      showSection('keterangan');
+    });
+
+    applyBgBtn.addEventListener('click', () => {
+      applyBackground();
+    });
+
+    resetBgBtn.addEventListener('click', () => {
+      resetBackground();
+    });
+
+    // On page load check login status
+    if (isLoggedIn()) {
+      showSection('home');
+    } else {
+      showSection('login');
+    }
+
+    // Allow Enter key to login
+    [usernameInput, passwordInput].forEach(input => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          loginBtn.click();
+        }
+      });
+    });
+
+  })();
+</script>
+
+</body>
+</html>
+
+  
